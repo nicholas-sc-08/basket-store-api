@@ -17,14 +17,14 @@ export class UserService {
         return user;
     }
 
-    async create(email: string, password: string) {
+    async create(name: string, email: string, password: string) {
         const userExists = await this.repo.findOne({ where: { email } });
 
         if (userExists) {
             throw new ConflictException('User with this e-mail already exists');
         }
 
-        return await this.repo.save({ email, password });
+        return await this.repo.save({ name, email, password });
     }
 
 }
