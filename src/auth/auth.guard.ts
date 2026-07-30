@@ -1,6 +1,7 @@
-import { CanActivate, ExecutionContext } from "@nestjs/common";
+import { CanActivate, ExecutionContext, Injectable, UnauthorizedException } from "@nestjs/common";
 import { JwtService } from "@nestjs/jwt";
 
+@Injectable()
 export class AuthGuard implements CanActivate {
     constructor(private jwtService: JwtService) { }
 
@@ -10,8 +11,10 @@ export class AuthGuard implements CanActivate {
         const token = request.cookies.access_token;
 
         if (!token) {
-            return false;
+            throw new UnauthorizedException('you must be logged in');
         }
+
+
 
         const payload = await this.jwtService.verifyAsync(token);
 
