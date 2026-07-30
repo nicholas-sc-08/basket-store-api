@@ -1,8 +1,11 @@
-import { Body, Controller, Post, Res } from '@nestjs/common';
+import { Body, Controller, Get, Post, Res, UseGuards } from '@nestjs/common';
 import { CreateUserDto } from '../user/dto/create-user.dto';
 import { AuthService } from './auth.service';
 import { SigninDto } from '../dto/signin-dto';
 import type { Response } from 'express';
+import { AuthGuard } from './auth.guard';
+import { CurrentUser } from './decorators/current-user.decorator';
+import { User } from '../user/user.entity';
 
 @Controller('auth')
 export class AuthController {
@@ -35,5 +38,11 @@ export class AuthController {
         response.clearCookie('access_token');
 
         return { message: 'signed out successfully' }
+    }
+
+    @Get('/whoami')
+    @UseGuards(AuthGuard)
+    async whoAmI(@CurrentUser() user: User) {
+        return user;
     }
 }

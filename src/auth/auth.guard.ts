@@ -14,12 +14,14 @@ export class AuthGuard implements CanActivate {
             throw new UnauthorizedException('you must be logged in');
         }
 
+        try {
+            const payload = await this.jwtService.verifyAsync(token);
 
+            request.user = payload;
 
-        const payload = await this.jwtService.verifyAsync(token);
-
-        request.user = payload;
-
-        return true;
+            return true;
+        } catch (error) {
+            throw new UnauthorizedException('invalid or expired token');
+        }
     }
 }

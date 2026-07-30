@@ -19,3 +19,6 @@ Content-Type: application/json
 
 ### signout user
 POST http://localhost:3000/auth/signout
+
+### who am i
+GET http://localhost:3000/auth/whoami
