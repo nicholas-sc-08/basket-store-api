@@ -22,7 +22,7 @@ export class UserService {
     }
 
     async findByEmail(email: string) {
-        return this.repo.find({ where: { email } });
+        return this.repo.findOne({ where: { email } });
     }
 
     async create(name: string, email: string, password: string) {
