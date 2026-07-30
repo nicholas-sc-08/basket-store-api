@@ -7,8 +7,8 @@ import { Repository } from 'typeorm';
 export class UserService {
     constructor(@InjectRepository(User) private repo: Repository<User>) { }
 
-    findOne(id: string) {
-        const user = this.repo.findOne({ where: { id } });
+    async findOne(id: string) {
+        const user = await this.repo.findOne({ where: { id } });
 
         if (!user) {
             throw new NotFoundException(`User with id ${id} not found`);
