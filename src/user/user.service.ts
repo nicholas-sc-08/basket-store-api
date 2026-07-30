@@ -27,8 +27,20 @@ export class UserService {
         return await this.repo.save({ name, email, password });
     }
 
+    async update(id: string, data: Partial<User>) {
+        const user = await this.findOne(id);
+
+        if (!user) {
+            throw new NotFoundException(`user with id ${id} does not exists`);
+        }
+
+        Object.assign(user, data);
+
+        return this.repo.save(user);
+    }
+
     async remove(id: string) {
-        const user = await this.repo.findOne({ where: { id } });
+        const user = await this.findOne(id);
 
         if (!user) {
             throw new NotFoundException(`user with id ${id} does not exists`);
