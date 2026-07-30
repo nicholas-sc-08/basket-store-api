@@ -1,0 +1,28 @@
+## find user by id
+GET http://localhost:3000/user/370f50a7-c4d0-4c34-b3f7-63f19e432171
+
+### find all users
+GET http://localhost:3000/user
+
+### create user
+POST http://localhost:3000/user
+Content-Type: application/json
+
+{
+    "name": "Isabela Reis Fontele",
+    "email": "belafontele1@gmail.com",
+    "password": "1234567"
+}
+
+### partial upadte user
+PATCH  http://localhost:3000/user/390356b7-cb13-4315-976f-852a76d8cb27
+Content-Type: application/json
+
+{
+    "name": "Isabela Reis Fontele",
+    "email": "belafontele1@gmail.com",
+    "password": "123456789"
+}
+
+### delete user with id
+DELETE http://localhost:3000/user/390356b7-cb13-4315-976f-852a76d8cb27
