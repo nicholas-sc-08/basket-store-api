@@ -10,3 +10,6 @@ Content-Type: application/json
     "email": "belafontele1@gmail.com",
     "password": "1234567"
 }
+
+### delete user with id
+DELETE http://localhost:3000/user/370f50a7-c4d0-4c34-b3f7-63f19e432171

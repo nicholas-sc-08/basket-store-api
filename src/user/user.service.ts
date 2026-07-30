@@ -11,7 +11,7 @@ export class UserService {
         const user = await this.repo.findOne({ where: { id } });
 
         if (!user) {
-            throw new NotFoundException(`User with id ${id} not found`);
+            throw new NotFoundException(`user with id ${id} not found`);
         }
 
         return user;
@@ -21,10 +21,20 @@ export class UserService {
         const userExists = await this.repo.findOne({ where: { email } });
 
         if (userExists) {
-            throw new ConflictException('User with this e-mail already exists');
+            throw new ConflictException('user with this e-mail already exists');
         }
 
         return await this.repo.save({ name, email, password });
+    }
+
+    async remove(id: string) {
+        const user = await this.repo.findOne({ where: { id } });
+
+        if (!user) {
+            throw new NotFoundException(`user with id ${id} does not exists`);
+        }
+
+        return await this.repo.remove(user);
     }
 
 }
