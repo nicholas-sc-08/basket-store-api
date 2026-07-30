@@ -10,6 +10,11 @@ import { UpdateUserDto } from './dto/update-user.dto';
 export class UserController {
     constructor(private userService: UserService) { }
 
+    @Get()
+    find() {
+        return this.userService.find();
+    }
+
     @Get('/:id')
     findOne(@Param('id') id: string) {
         return this.userService.findOne(id);

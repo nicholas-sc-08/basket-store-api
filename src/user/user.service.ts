@@ -7,6 +7,10 @@ import { Repository } from 'typeorm';
 export class UserService {
     constructor(@InjectRepository(User) private repo: Repository<User>) { }
 
+    async find() {
+        return await this.repo.findAndCount();
+    }
+
     async findOne(id: string) {
         const user = await this.repo.findOne({ where: { id } });
 
