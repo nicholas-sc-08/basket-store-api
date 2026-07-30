@@ -1,25 +1,3 @@
-### signin user
-POST http://localhost:3000/auth/signin
-Content-Type: application/json
-
-{
-    "email": "belafontenele1@gmail.com",
-    "password": "1234567"
-}
-
-### signup user
-POST http://localhost:3000/auth/signup
-Content-Type: application/json
-
-{
-    "name": "Isabela Reis Fontele",
-    "email": "belafontenele1@gmail.com",
-    "password": "1234567"
-}
-
-### signout user
-POST http://localhost:3000/auth/signout
-
 ### find user by id
 GET http://localhost:3000/user/370f50a7-c4d0-4c34-b3f7-63f19e432171
 
