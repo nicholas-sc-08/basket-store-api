@@ -21,6 +21,10 @@ export class UserService {
         return user;
     }
 
+    async findByEmail(email: string) {
+        return this.repo.find({ where: { email } });
+    }
+
     async create(name: string, email: string, password: string) {
         const userExists = await this.repo.findOne({ where: { email } });
 
