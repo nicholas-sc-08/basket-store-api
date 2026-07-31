@@ -36,4 +36,14 @@ export class CategoryService {
 
         return this.repo.save(category);
     }
+
+    async remove(id: string) {
+        const category = await this.repo.findOne({ where: { id } });
+
+        if(!category) {
+            throw new NotFoundException('category with this id does not exists');
+        }
+
+        return await this.repo.remove(category);
+    }
 }

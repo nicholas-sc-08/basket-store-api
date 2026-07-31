@@ -1,4 +1,4 @@
-import { Body, Controller, Get, Param, Patch, Post, UseGuards } from '@nestjs/common';
+import { Body, Controller, Delete, Get, Param, Patch, Post, UseGuards } from '@nestjs/common';
 import { AuthGuard } from '../auth/auth.guard';
 import { Serialize } from '../interceptors/serialize.interceptor';
 import { CategoryDto } from './dto/category.dto';
@@ -31,5 +31,10 @@ export class CategoryController {
     @Patch('/:id')
     update(@Param('id') id: string, data: UpdateCategoryDto) {
         return this.categoryService.update(id, data);
+    }
+
+    @Delete('/:id')
+    remove(@Param('id') id: string) {
+        return this.categoryService.remove(id);
     }
 }
