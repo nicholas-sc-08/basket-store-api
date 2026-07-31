@@ -7,6 +7,10 @@ import { Repository } from 'typeorm';
 export class CategoryService {
     constructor(@InjectRepository(Category) private repo: Repository<Category>) { }
 
+    async find() {
+        return await this.repo.find();
+    }
+
     async findOne(id: string) {
         return await this.repo.findOne({ where: { id } })
     }

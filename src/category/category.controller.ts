@@ -11,6 +11,11 @@ import { CategoryService } from './category.service';
 export class CategoryController {
     constructor(private readonly categoryService: CategoryService) { }
 
+    @Get()
+    find() {
+        return this.categoryService.find();
+    }
+
     @Get('/:id')
     findOne(@Param('id') id: string) {
         return this.categoryService.findOne(id);
@@ -21,4 +26,6 @@ export class CategoryController {
         const { name, description } = data;
         return this.categoryService.create(name, description);
     }
+
+    
 }
