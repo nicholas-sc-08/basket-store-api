@@ -1,9 +1,10 @@
-import { Body, Controller, Get, Param, Post, UseGuards } from '@nestjs/common';
+import { Body, Controller, Get, Param, Patch, Post, UseGuards } from '@nestjs/common';
 import { AuthGuard } from '../auth/auth.guard';
 import { Serialize } from '../interceptors/serialize.interceptor';
 import { CategoryDto } from './dto/category.dto';
 import { CreateCategoryDto } from './dto/create-category.dto';
 import { CategoryService } from './category.service';
+import { UpdateCategoryDto } from './dto/update-category.dto';
 
 @Controller('category')
 @UseGuards(AuthGuard)
@@ -27,5 +28,8 @@ export class CategoryController {
         return this.categoryService.create(name, description);
     }
 
-    
+    @Patch('/:id')
+    update(@Param('id') id: string, data: UpdateCategoryDto) {
+        return this.categoryService.update(id, data);
+    }
 }
