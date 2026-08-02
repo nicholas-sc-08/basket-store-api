@@ -27,13 +27,13 @@ import { CategoryModule } from './category/category.module';
         entities: [User],
 
         autoLoadEntities: true,
-        synchronize: false
+        synchronize: true
       }),
     }),
     UserModule,
     AuthModule,
     SecurityModule,
-    CategoryModule
+    CategoryModule,
   ],
   controllers: [AppController],
   providers: [AppService],

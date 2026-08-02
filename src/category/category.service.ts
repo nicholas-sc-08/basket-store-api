@@ -8,7 +8,7 @@ export class CategoryService {
     constructor(@InjectRepository(Category) private repo: Repository<Category>) { }
 
     async find() {
-        return await this.repo.find();
+        return await this.repo.findAndCount();
     }
 
     async findOne(id: string) {

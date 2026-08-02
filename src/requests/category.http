@@ -1,0 +1,25 @@
+### get all categories
+GET http://localhost:3000/category
+
+### get specific category by id
+GET http://localhost:3000/category/asd123-129842-adjas
+
+### create a new category
+POST http://localhost:3000/category
+Content-Type: application/json
+
+{
+    "name": "Perfume",
+    "description": "Explore our exclusive selection of fragrances designed to translate your personality into scent. From fresh, everyday colognes to intense, striking evening perfumes, discover the perfect olfactory signature to mark your presence wherever you go. Find your next favorite scent and transform your routine into a unique sensory experience."
+}
+
+### partial update of an existing category
+PATCH http://localhost:3000/category/:dasdad-4019343-noasfdnasd
+Content-Type: application/json
+
+{
+    "name": "New Perfume"
+}
+
+### delete an existing category
+DELETE http://localhost:3000/category/:hasdad-asdbhasdb-123t832

@@ -12,8 +12,8 @@ POST http://localhost:3000/auth/signup
 Content-Type: application/json
 
 {
-    "name": "Isabela Reis Fontele",
-    "email": "belafontenele1@gmail.com",
+    "name": "Nicholas Serencovich Fontele",
+    "email": "nicholassc2008@gmail.com",
     "password": "1234567"
 }
 
